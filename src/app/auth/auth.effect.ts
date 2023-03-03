@@ -11,15 +11,14 @@ export class AuthEffects {
         this.actions$
             .pipe(
                 ofType(AuthActions.login),
-                tap(action => {
-                    localStorage.setItem("user", 
+                tap(action => localStorage.setItem("user", 
                     JSON.stringify(action.user))
-                })
+                )
             )
-        ,
-        {dispatch:false});
+        ,{dispatch:false}
+    );
 
-        logout$ = createEffect(() => 
+    logout$ = createEffect(() => 
         this.actions$
             .pipe(
                 ofType(AuthActions.logout),
@@ -28,8 +27,8 @@ export class AuthEffects {
                     this.router.navigateByUrl(("/login"));
                 })
             )
-            ,
-        {dispatch:false});
+        ,{dispatch:false}
+    );
 
     constructor(private actions$: Actions, private router: Router) {
 
