@@ -75,7 +75,7 @@ export class EditCourseDialogComponent {
 
     this.store.dispatch(courseUpdated({update}));
 
-    this.dialogRef.close;
+    this.dialogRef.close();
 
 
   }
