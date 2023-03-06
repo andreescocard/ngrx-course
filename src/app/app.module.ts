@@ -19,7 +19,7 @@ import {environment} from '../environments/environment';
 import {RouterState, StoreRouterConnectingModule} from '@ngrx/router-store';
 
 import {EffectsModule} from '@ngrx/effects';
-import {EntityDataModule} from '@ngrx/data';
+import {EntityDataModule, EntityMetadataMap} from '@ngrx/data';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { reducers, metaReducers } from './reducers';
 import { AuthGuard } from './auth/auth.guard';
@@ -37,7 +37,6 @@ const routes: Routes = [
     redirectTo: '/'
   }
 ];
-
 
 
 @NgModule({
@@ -67,6 +66,7 @@ const routes: Routes = [
     }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }), 
     EffectsModule.forRoot(),
+    EntityDataModule.forRoot({}),
     StoreRouterConnectingModule.forRoot({
       stateKey: "router",
       routerState: RouterState.Minimal
