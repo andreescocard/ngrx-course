@@ -44,7 +44,10 @@ export const coursesRoutes: Routes = [
   },
   {
     path: ':courseUrl',
-    component: CourseComponent
+    component: CourseComponent,
+    resolve: {
+      courses: CoursesResolver
+    }
   }
 ];
 
@@ -92,7 +95,8 @@ const entityMetadata : EntityMetadataMap = {
   entryComponents: [EditCourseDialogComponent],
   providers: [
     CoursesHttpService,
-    CourseEntityService
+    CourseEntityService,
+    CoursesResolver
   ]
 })
 export class CoursesModule {
